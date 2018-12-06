@@ -1,0 +1,34 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "street",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "suite",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "city",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "zipcode",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "min"
+            ],
+            "fieldValidateRulesMin": "5"
+        }
+    ],
+    "changelogDate": "20181205113213",
+    "dto": "no",
+    "searchEngine": false,
+    "service": "no",
+    "entityTableName": "address",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

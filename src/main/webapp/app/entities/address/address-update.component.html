@@ -1,0 +1,54 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-address-heading" jhiTranslate="mixprojectApp.address.home.createOrEditLabel">Create or edit a Address</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!address.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="address.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mixprojectApp.address.street" for="field_street">Street</label>
+                    <input type="text" class="form-control" name="street" id="field_street"
+                        [(ngModel)]="address.street" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mixprojectApp.address.suite" for="field_suite">Suite</label>
+                    <input type="text" class="form-control" name="suite" id="field_suite"
+                        [(ngModel)]="address.suite" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mixprojectApp.address.city" for="field_city">City</label>
+                    <input type="text" class="form-control" name="city" id="field_city"
+                        [(ngModel)]="address.city" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mixprojectApp.address.zipcode" for="field_zipcode">Zipcode</label>
+                    <input type="number" class="form-control" name="zipcode" id="field_zipcode"
+                        [(ngModel)]="address.zipcode" min="5" jhiMin="5"/>
+                    <div [hidden]="!(editForm.controls.zipcode?.dirty && editForm.controls.zipcode?.invalid)">
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.zipcode?.errors?.min" jhiTranslate="entity.validation.min" translateValues="{ min: 5 }">
+                            This field should be at least 5.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.zipcode?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

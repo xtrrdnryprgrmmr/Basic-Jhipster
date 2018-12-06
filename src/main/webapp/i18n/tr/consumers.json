@@ -1,0 +1,25 @@
+{
+    "mixprojectApp": {
+        "consumers": {
+            "home": {
+                "title": "Consumers",
+                "createLabel": "Create a new Consumers",
+                "createOrEditLabel": "Create or edit a Consumers"
+            },
+            "created": "A new Consumers is created with identifier {{ param }}",
+            "updated": "A Consumers is updated with identifier {{ param }}",
+            "deleted": "A Consumers is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Consumers {{ id }}?"
+            },
+            "detail": {
+                "title": "Consumers"
+            },
+            "name": "Name",
+            "email": "Email",
+            "phone": "Phone",
+            "websites": "Websites",
+            "adress": "Adress"
+        }
+    }
+}

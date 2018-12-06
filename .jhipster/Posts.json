@@ -1,0 +1,29 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "title",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "body",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "user",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20181205151736",
+    "dto": "no",
+    "searchEngine": false,
+    "service": "no",
+    "entityTableName": "posts",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

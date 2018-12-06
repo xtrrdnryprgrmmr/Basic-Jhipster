@@ -1,0 +1,67 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-consumers-heading" jhiTranslate="mixprojectApp.consumers.home.createOrEditLabel">Create or edit a Consumers</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!consumers.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="consumers.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mixprojectApp.consumers.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="consumers.name" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mixprojectApp.consumers.email" for="field_email">Email</label>
+                    <input type="text" class="form-control" name="email" id="field_email"
+                        [(ngModel)]="consumers.email" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mixprojectApp.consumers.phone" for="field_phone">Phone</label>
+                    <input type="number" class="form-control" name="phone" id="field_phone"
+                        [(ngModel)]="consumers.phone" min="11" jhiMin="11"/>
+                    <div [hidden]="!(editForm.controls.phone?.dirty && editForm.controls.phone?.invalid)">
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.phone?.errors?.min" jhiTranslate="entity.validation.min" translateValues="{ min: 11 }">
+                            This field should be at least 11.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.phone?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mixprojectApp.consumers.websites" for="field_websites">Websites</label>
+                    <input type="text" class="form-control" name="websites" id="field_websites"
+                        [(ngModel)]="consumers.websites" pattern="(http:\/\/|https:\/\/)?(www.)?([a-zA-Z0-9]+).[a-zA-Z0-9]*.[a-z]{3}\.([a-z]+)?$"/>
+                    <div [hidden]="!(editForm.controls.websites?.dirty && editForm.controls.websites?.invalid)">
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.websites?.errors?.pattern" jhiTranslate="entity.validation.pattern" translateValues="{ pattern: 'Websites' }">
+                            This field should follow pattern for "Websites".
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mixprojectApp.consumers.adress" for="field_adress">Adress</label>
+                    <select class="form-control" id="field_adress" name="adress" [(ngModel)]="consumers.adress" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="addressOption.id === consumers.adress?.id ? consumers.adress : addressOption" *ngFor="let addressOption of addresses; trackBy: trackAddressById">{{addressOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
